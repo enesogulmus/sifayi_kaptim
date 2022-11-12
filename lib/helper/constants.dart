@@ -34,10 +34,10 @@ class CustomDecorations{
 }
 
 class CustomColors{
-  static Color accentColor = const Color.fromRGBO(218, 41, 28, 1);
-  static Color primaryColor = const Color.fromRGBO(38, 38, 38, 1);
-  static Color scaffoldBackGroundColor = const Color.fromRGBO(19, 19, 19, 1);
-  static Color primaryTextColor = const Color.fromRGBO(255, 255, 255, 1);
-  static Color passiveTextColor = const Color.fromRGBO(94, 102, 118, 1);
+  static Color accentColor = const Color.fromRGBO(121, 201, 188, 1);
+  static Color primaryColor = const Color.fromRGBO(255, 255, 255, 1);
+  static Color scaffoldBackGroundColor = const Color.fromRGBO(243, 248, 247, 1);
+  static Color primaryTextColor = const Color.fromRGBO(109, 110, 113, 1);
+  static Color passiveTextColor = const Color.fromRGBO(214, 219, 222, 1);
   static Color generalColor = const Color.fromRGBO(208, 208, 208, 1);
 }

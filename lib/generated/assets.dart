@@ -6,11 +6,24 @@ class Assets {
   static const String animationsSecond = 'assets/animations/second.json';
   static const String animationsThird = 'assets/animations/third.json';
   static const String fontsNunitoRegular = 'assets/fonts/Nunito-Regular.ttf';
+  static const String svgAge = 'assets/svg/age.svg';
+  static const String svgAndropause = 'assets/svg/andropause.svg';
+  static const String svgHeight = 'assets/svg/height.svg';
+  static const String svgIconChecked = 'assets/svg/icon_checked.svg';
   static const String svgIconDown = 'assets/svg/icon_down.svg';
   static const String svgIconSearch = 'assets/svg/icon_search.svg';
   static const String svgIconUser = 'assets/svg/icon_user.svg';
   static const String svgIcons8Male24 = 'assets/svg/icons8-male-24.svg';
   static const String svgIcons8Male241 = 'assets/svg/icons8-male-24_1.svg';
-  static const String svgNeyimvarLogo = 'assets/svg/neyimvar-logo.svg';
+  static const String svgLogo = 'assets/svg/logo.png';
+  static const String svgMenopause = 'assets/svg/menopause.svg';
+  static const String svgNoAlcohol = 'assets/svg/no_alcohol.svg';
+  static const String svgNoSmoking = 'assets/svg/no_smoking.svg';
+  static const String svgPregnancy = 'assets/svg/pregnancy.svg';
+  static const String svgSex = 'assets/svg/sex.svg';
+  static const String svgSexMale = 'assets/svg/sex_male.svg';
+  static const String svgWeight = 'assets/svg/weight.svg';
+  static const String svgYesAlcohol = 'assets/svg/yes_alcohol.svg';
+  static const String svgYesSmoking = 'assets/svg/yes_smoking.svg';
 
 }

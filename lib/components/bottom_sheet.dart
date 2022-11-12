@@ -244,6 +244,8 @@ class _CustomBottomSheetState extends State<CustomBottomSheet> {
                     child: SvgPicture.asset(
                       widget.leadingPath!,
                       color: context.accentColor(),
+                      height: 24,
+                      width: 24,
                     ),
                   )
                 : const SizedBox(),

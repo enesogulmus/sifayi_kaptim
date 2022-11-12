@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:sifayi_kaptim/components/bottom_sheet.dart';
 import 'package:sifayi_kaptim/components/create_route.dart';
 import 'package:sifayi_kaptim/components/custom_button.dart';
@@ -24,13 +23,8 @@ class PersonalInformation extends StatefulWidget {
 class _PersonalInformationState extends State<PersonalInformation> {
   ScrollController singleChildScrollView = ScrollController();
   late GlobalKey<FormState> _formKey;
-
   late List<String> yesNoList;
   late List<String> sexList;
-
-  /*late List<String> ageList;
-  late List<String> heightList;
-  late List<String> weightList;*/
   late String valueOfSex;
   late String valueOfPregnancy;
   late TextEditingController valueOfAge;
@@ -48,24 +42,15 @@ class _PersonalInformationState extends State<PersonalInformation> {
     _formKey = GlobalKey();
     sexList = ['Male', 'Female'];
     yesNoList = ['Yes', 'No'];
-    /*for (int i = 18; i < 100; i++) {
-      ageList.add(i.toString());
-    }
-    for (int i = 120; i < 220; i++) {
-      heightList.add(i.toString());
-    }
-    for (int i = 30; i < 220; i++) {
-      weightList.add(i.toString());
-    }*/
     valueOfSex = '';
     valueOfPregnancy = '';
-    valueOfAge = TextEditingController();
     valueOfMutual = '';
-    valueOfHeight = TextEditingController();
-    valueOfWeight = TextEditingController();
     valueOfSmoking = '';
     valueOfAlcohol = '';
     mutualTitle = '';
+    valueOfAge = TextEditingController();
+    valueOfHeight = TextEditingController();
+    valueOfWeight = TextEditingController();
   }
 
   @override
@@ -82,39 +67,16 @@ class _PersonalInformationState extends State<PersonalInformation> {
                 margin: const EdgeInsets.symmetric(
                   vertical: 60,
                 ),
-                child: SvgPicture.asset(Assets.svgNeyimvarLogo),
+                child: Image.asset(
+                  Assets.svgLogo,
+                  height: 78,
+                ),
               ),
               Form(
                 key: _formKey,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    CustomBottomSheet.withOutSearch(
-                      myItemList: sexList,
-                      title: 'Select Sex',
-                      selectedText: (value) {
-                        valueOfSex = value;
-                        setState(() {
-                          if (valueOfSex != 'Male') {
-                            mutualTitle = 'Menopause';
-                          } else {
-                            mutualTitle = 'Andropause';
-                          }
-                        });
-                      },
-                      leadingPath: Assets.svgIconUser,
-                    ),
-                    Visibility(
-                      visible: ((valueOfSex.isNotEmpty && valueOfSex != '') ? valueOfSex != 'Male' : false),
-                      child: CustomBottomSheet.withOutSearch(
-                        myItemList: yesNoList,
-                        title: 'Select Pregnancy',
-                        selectedText: (value) {
-                          valueOfPregnancy = value;
-                        },
-                        leadingPath: Assets.svgIconUser,
-                      ),
-                    ),
                     WrapTextFormField(
                       child: customTextFormField(
                         context,
@@ -135,23 +97,7 @@ class _PersonalInformationState extends State<PersonalInformation> {
                           setState(() {});
                         },
                         inputType: TextInputType.number,
-                        textInputAction: TextInputAction.done,
-                        iconPath: Assets.svgIconUser,
-                      ),
-                    ),
-                    Visibility(
-                      visible: ((valueOfSex.isNotEmpty)
-                          ? (valueOfAge.text.isNotEmpty && valueOfAge.text != '')
-                              ? (int.parse(valueOfAge.text) >= 40)
-                              : false
-                          : false),
-                      child: CustomBottomSheet.withOutSearch(
-                        myItemList: yesNoList,
-                        title: 'Select $mutualTitle',
-                        selectedText: (value) {
-                          valueOfMutual = value;
-                        },
-                        leadingPath: Assets.svgIcons8Male24,
+                        iconPath: Assets.svgAge,
                       ),
                     ),
                     WrapTextFormField(
@@ -171,8 +117,7 @@ class _PersonalInformationState extends State<PersonalInformation> {
                           }
                         },
                         inputType: TextInputType.number,
-                        textInputAction: TextInputAction.next,
-                        iconPath: Assets.svgIconUser,
+                        iconPath: Assets.svgHeight,
                       ),
                     ),
                     WrapTextFormField(
@@ -192,8 +137,49 @@ class _PersonalInformationState extends State<PersonalInformation> {
                           }
                         },
                         inputType: TextInputType.number,
-                        textInputAction: TextInputAction.next,
-                        iconPath: Assets.svgIconUser,
+                        textInputAction: TextInputAction.done,
+                        iconPath: Assets.svgWeight,
+                      ),
+                    ),
+                    CustomBottomSheet.withOutSearch(
+                      myItemList: sexList,
+                      title: 'Select Sex',
+                      selectedText: (value) {
+                        valueOfSex = value;
+                        setState(() {
+                          if (valueOfSex != 'Male') {
+                            mutualTitle = 'Menopause';
+                          } else {
+                            mutualTitle = 'Andropause';
+                          }
+                        });
+                      },
+                      leadingPath: Assets.svgSex,
+                    ),
+                    Visibility(
+                      visible: ((valueOfSex.isNotEmpty && valueOfSex != '') ? valueOfSex != 'Male' : false),
+                      child: CustomBottomSheet.withOutSearch(
+                        myItemList: yesNoList,
+                        title: 'Select Pregnancy',
+                        selectedText: (value) {
+                          valueOfPregnancy = value;
+                        },
+                        leadingPath: Assets.svgPregnancy,
+                      ),
+                    ),
+                    Visibility(
+                      visible: ((valueOfSex.isNotEmpty)
+                          ? (valueOfAge.text.isNotEmpty && valueOfAge.text != '')
+                              ? (int.parse(valueOfAge.text) >= 40)
+                              : false
+                          : false),
+                      child: CustomBottomSheet.withOutSearch(
+                        myItemList: yesNoList,
+                        title: 'Select $mutualTitle',
+                        selectedText: (value) {
+                          valueOfMutual = value;
+                        },
+                        leadingPath: Assets.svgAndropause,
                       ),
                     ),
                     CustomBottomSheet.withOutSearch(
@@ -202,7 +188,7 @@ class _PersonalInformationState extends State<PersonalInformation> {
                       selectedText: (value) {
                         valueOfSmoking = value;
                       },
-                      leadingPath: Assets.svgIconUser,
+                      leadingPath: Assets.svgYesSmoking,
                     ),
                     CustomBottomSheet.withOutSearch(
                       myItemList: yesNoList,
@@ -210,7 +196,7 @@ class _PersonalInformationState extends State<PersonalInformation> {
                       selectedText: (value) {
                         valueOfAlcohol = value;
                       },
-                      leadingPath: Assets.svgIconUser,
+                      leadingPath: Assets.svgYesAlcohol,
                     ),
                     Button(
                       color: CustomColors.accentColor,

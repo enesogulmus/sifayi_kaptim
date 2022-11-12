@@ -22,6 +22,8 @@ InputDecoration customInputDecoration(
             child: SvgPicture.asset(
               iconPath,
               color: context.accentColor(),
+              height: 24,
+              width: 24,
             ),
           )
         : Container(

@@ -122,257 +122,318 @@ class _QuestionsState extends State<Questions> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: CustomColors.scaffoldBackGroundColor,
-      body: Column(
-        children: [
-          Container(
-            margin: const EdgeInsets.symmetric(
-              vertical: 60,
+    bool shouldPop = true;
+    return WillPopScope(
+      onWillPop: () async {
+        Diseases.lungDisease = 0;
+        Diseases.hypertension = 0;
+        Diseases.herniatedDisc = 0;
+        Diseases.calcification = 0;
+        Diseases.heartDisease = 0;
+        Diseases.ulcer = 0;
+        Diseases.diabetes = 0;
+        Diseases.cholesterol = 0;
+        Diseases.cancer = 0;
+        Diseases.obesity = 0;
+        return shouldPop;
+      },
+      child: Scaffold(
+        backgroundColor: CustomColors.scaffoldBackGroundColor,
+        body: Column(
+          children: [
+            Container(
+              margin: const EdgeInsets.symmetric(
+                vertical: 60,
+              ),
+              child: Image.asset(
+                Assets.svgLogo,
+                height: 78,
+              ),
             ),
-            child: Image.asset(
-              Assets.svgLogo,
-              height: 78,
+            Container(
+              margin: const EdgeInsets.symmetric(vertical: 10),
+              child: CustomText(
+                text: 'You should choose illness you have!',
+                fontSize: 14,
+                textColor: context.primaryTextColor(),
+                fontWeight: FontWeight.w600,
+                isUnderlined: true,
+              ),
             ),
-          ),
-          Expanded(
-            child: ListView.separated(
-              itemCount: 45,
-              shrinkWrap: true,
-              separatorBuilder: (context, index) => WrapContainer(
-                child: Divider(
-                  color: context.generalColor(),
-                  thickness: 1.0,
+            Expanded(
+              child: ListView.separated(
+                itemCount: 45,
+                shrinkWrap: true,
+                separatorBuilder: (context, index) => WrapContainer(
+                  child: Divider(
+                    color: context.generalColor(),
+                    thickness: 1.0,
+                  ),
+                ),
+                itemBuilder: (context, index) => LabeledCheckbox(
+                  label: dataOfGeneralSympthoms[index],
+                  padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                  value: _isSelectedList[index],
+                  onChanged: (bool newValue) {
+                    selectedIndexes.add(index);
+                    setState(() {
+                      _isSelectedList[index] = newValue;
+                    });
+                  },
                 ),
               ),
-              itemBuilder: (context, index) => LabeledCheckbox(
-                label: dataOfGeneralSympthoms[index],
-                padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                value: _isSelectedList[index],
-                onChanged: (bool newValue) {
-                  selectedIndexes.add(index);
-                  setState(() {
-                    _isSelectedList[index] = newValue;
-                  });
-                },
-              ),
             ),
-          ),
-          Button(
-            color: CustomColors.accentColor,
-            textColor: CustomColors.primaryColor,
-            text: 'Neyim Var',
-            hasBorder: false,
-            action: () {
-              calculationOfGeneralPosibility();
-            },
-          ),
-        ],
+            Button(
+              color: CustomColors.accentColor,
+              textColor: CustomColors.primaryColor,
+              text: 'Neyim Var',
+              hasBorder: false,
+              action: () {
+                calculationOfGeneralPosibility();
+              },
+            ),
+          ],
+        ),
       ),
     );
   }
 
   void calculationOfGeneralPosibility() {
-    for (var element in selectedIndexes) {
-      switch (selectedIndexes[element]) {
-        case 0:
-          Diseases.diabetes++;
-          Diseases.cancer++;
-          Diseases.hypertension++;
-          break;
-        case 1:
-          Diseases.diabetes++;
-          Diseases.cancer++;
-          Diseases.ulcer++;
-          break;
-        case 2:
-          Diseases.diabetes++;
-          Diseases.hypertension++;
-          break;
-        case 3:
-          Diseases.diabetes++;
-          Diseases.cancer++;
-          Diseases.hypertension++;
-          Diseases.cholesterol++;
-          Diseases.calcification++;
-          Diseases.heartDisease++;
-          break;
-        case 4:
-          Diseases.diabetes++;
-          Diseases.cancer++;
-          Diseases.hypertension++;
-          Diseases.cholesterol++;
-          Diseases.calcification++;
-          Diseases.heartDisease++;
-          Diseases.herniatedDisc++;
-          break;
-        case 5:
-          Diseases.heartDisease++;
-          Diseases.hypertension++;
-          break;
-        case 6:
-          Diseases.calcification++;
-          Diseases.hypertension++;
-          break;
-        case 7:
-          Diseases.lungDisease++;
-          Diseases.cancer++;
-          Diseases.hypertension++;
-          break;
-        case 8:
-          Diseases.heartDisease++;
-          Diseases.hypertension++;
-          break;
-        case 9:
-          Diseases.cholesterol++;
-          Diseases.lungDisease++;
-          Diseases.hypertension++;
-          Diseases.heartDisease++;
-          break;
-        case 10:
-          Diseases.calcification++;
-          Diseases.cancer++;
-          Diseases.heartDisease++;
-          break;
-        case 11:
-          Diseases.calcification++;
-          Diseases.cancer++;
-          Diseases.herniatedDisc++;
-          Diseases.ulcer++;
-          Diseases.lungDisease++;
-          Diseases.heartDisease++;
-          break;
-        case 12:
-          Diseases.lungDisease++;
-          Diseases.cancer++;
-          Diseases.heartDisease++;
-          break;
-        case 13:
-          Diseases.cancer++;
-          Diseases.lungDisease++;
-          break;
-        case 14:
-          Diseases.cancer++;
-          break;
-        case 15:
-          Diseases.calcification++;
-          Diseases.cholesterol++;
-          Diseases.herniatedDisc++;
-          break;
-        case 16:
-          Diseases.cholesterol++;
-          Diseases.heartDisease++;
-          Diseases.lungDisease++;
-          break;
-        case 17:
-          Diseases.cholesterol++;
-          Diseases.cancer++;
-          Diseases.heartDisease++;
-          break;
-        case 18:
-          Diseases.cholesterol++;
-          break;
-        case 19:
-          Diseases.cholesterol++;
-          Diseases.diabetes++;
-          Diseases.hypertension++;
-          Diseases.herniatedDisc++;
-          Diseases.calcification++;
-          Diseases.heartDisease++;
-          break;
-        case 20:
-          Diseases.calcification++;
-          break;
-        case 21:
-          Diseases.calcification++;
-          Diseases.herniatedDisc++;
-          break;
-        case 22:
-          Diseases.calcification++;
-          break;
-        case 23:
-          Diseases.calcification++;
-          break;
-        case 24:
-          Diseases.heartDisease++;
-          Diseases.calcification++;
-          break;
-        case 25:
-          Diseases.calcification++;
-          Diseases.herniatedDisc++;
-          break;
-        case 26:
-          Diseases.heartDisease++;
-          Diseases.herniatedDisc++;
-          Diseases.ulcer++;
-          break;
-        case 27:
-          Diseases.herniatedDisc++;
-          Diseases.calcification++;
-          break;
-        case 28:
-          Diseases.herniatedDisc++;
-          Diseases.calcification++;
-          Diseases.heartDisease++;
-          break;
-        case 29:
-          Diseases.calcification++;
-          Diseases.herniatedDisc++;
-          break;
-        case 30:
-          Diseases.ulcer++;
-          break;
-        case 31:
-          Diseases.ulcer++;
-          Diseases.heartDisease++;
-          break;
-        case 32:
-          Diseases.ulcer++;
-          break;
-        case 33:
-          Diseases.ulcer++;
-          break;
-        case 34:
-          Diseases.ulcer++;
-          Diseases.cancer++;
-          Diseases.heartDisease++;
-          break;
-        case 35:
-          Diseases.heartDisease++;
-          break;
-        case 36:
-          Diseases.heartDisease++;
-          break;
-        case 37:
-          Diseases.heartDisease++;
-          break;
-        case 38:
-          Diseases.heartDisease++;
-          break;
-        case 39:
-          Diseases.heartDisease++;
-          Diseases.lungDisease++;
-          Diseases.calcification++;
-          Diseases.herniatedDisc++;
-          Diseases.hypertension++;
-          break;
-        case 40:
-          Diseases.lungDisease++;
-          break;
-        case 41:
-          Diseases.lungDisease++;
-          Diseases.cancer++;
-          break;
-        case 42:
-          Diseases.lungDisease++;
-          break;
-        case 43:
-          Diseases.lungDisease++;
-          break;
-        case 44:
-          Diseases.lungDisease++;
-          break;
+    if (selectedIndexes.length >= 7) {
+      for (var element in selectedIndexes) {
+        switch (element) {
+          case 0:
+            Diseases.diabetes++;
+            Diseases.cancer++;
+            Diseases.hypertension++;
+            break;
+          case 1:
+            Diseases.diabetes++;
+            Diseases.cancer++;
+            Diseases.ulcer++;
+            break;
+          case 2:
+            Diseases.diabetes++;
+            Diseases.hypertension++;
+            break;
+          case 3:
+            Diseases.diabetes++;
+            Diseases.cancer++;
+            Diseases.hypertension++;
+            Diseases.cholesterol++;
+            Diseases.calcification++;
+            Diseases.heartDisease++;
+            break;
+          case 4:
+            Diseases.diabetes++;
+            Diseases.cancer++;
+            Diseases.hypertension++;
+            Diseases.cholesterol++;
+            Diseases.calcification++;
+            Diseases.heartDisease++;
+            Diseases.herniatedDisc++;
+            break;
+          case 5:
+            Diseases.heartDisease++;
+            Diseases.hypertension++;
+            break;
+          case 6:
+            Diseases.calcification++;
+            Diseases.hypertension++;
+            break;
+          case 7:
+            Diseases.lungDisease++;
+            Diseases.cancer++;
+            Diseases.hypertension++;
+            break;
+          case 8:
+            Diseases.heartDisease++;
+            Diseases.hypertension++;
+            break;
+          case 9:
+            Diseases.cholesterol++;
+            Diseases.lungDisease++;
+            Diseases.hypertension++;
+            Diseases.heartDisease++;
+            break;
+          case 10:
+            Diseases.calcification++;
+            Diseases.cancer++;
+            Diseases.heartDisease++;
+            break;
+          case 11:
+            Diseases.calcification++;
+            Diseases.cancer++;
+            Diseases.herniatedDisc++;
+            Diseases.ulcer++;
+            Diseases.lungDisease++;
+            Diseases.heartDisease++;
+            break;
+          case 12:
+            Diseases.lungDisease++;
+            Diseases.cancer++;
+            Diseases.heartDisease++;
+            break;
+          case 13:
+            Diseases.cancer++;
+            Diseases.lungDisease++;
+            break;
+          case 14:
+            Diseases.cancer++;
+            break;
+          case 15:
+            Diseases.calcification++;
+            Diseases.cholesterol++;
+            Diseases.herniatedDisc++;
+            break;
+          case 16:
+            Diseases.cholesterol++;
+            Diseases.heartDisease++;
+            Diseases.lungDisease++;
+            break;
+          case 17:
+            Diseases.cholesterol++;
+            Diseases.cancer++;
+            Diseases.heartDisease++;
+            break;
+          case 18:
+            Diseases.cholesterol++;
+            break;
+          case 19:
+            Diseases.cholesterol++;
+            Diseases.diabetes++;
+            Diseases.hypertension++;
+            Diseases.herniatedDisc++;
+            Diseases.calcification++;
+            Diseases.heartDisease++;
+            break;
+          case 20:
+            Diseases.calcification++;
+            break;
+          case 21:
+            Diseases.calcification++;
+            Diseases.herniatedDisc++;
+            break;
+          case 22:
+            Diseases.calcification++;
+            break;
+          case 23:
+            Diseases.calcification++;
+            break;
+          case 24:
+            Diseases.heartDisease++;
+            Diseases.calcification++;
+            break;
+          case 25:
+            Diseases.calcification++;
+            Diseases.herniatedDisc++;
+            break;
+          case 26:
+            Diseases.heartDisease++;
+            Diseases.herniatedDisc++;
+            Diseases.ulcer++;
+            break;
+          case 27:
+            Diseases.herniatedDisc++;
+            Diseases.calcification++;
+            break;
+          case 28:
+            Diseases.herniatedDisc++;
+            Diseases.calcification++;
+            Diseases.heartDisease++;
+            break;
+          case 29:
+            Diseases.calcification++;
+            Diseases.herniatedDisc++;
+            break;
+          case 30:
+            Diseases.ulcer++;
+            break;
+          case 31:
+            Diseases.ulcer++;
+            Diseases.heartDisease++;
+            break;
+          case 32:
+            Diseases.ulcer++;
+            break;
+          case 33:
+            Diseases.ulcer++;
+            break;
+          case 34:
+            Diseases.ulcer++;
+            Diseases.cancer++;
+            Diseases.heartDisease++;
+            break;
+          case 35:
+            Diseases.heartDisease++;
+            break;
+          case 36:
+            Diseases.heartDisease++;
+            break;
+          case 37:
+            Diseases.heartDisease++;
+            break;
+          case 38:
+            Diseases.heartDisease++;
+            break;
+          case 39:
+            Diseases.heartDisease++;
+            Diseases.lungDisease++;
+            Diseases.calcification++;
+            Diseases.herniatedDisc++;
+            Diseases.hypertension++;
+            break;
+          case 40:
+            Diseases.lungDisease++;
+            break;
+          case 41:
+            Diseases.lungDisease++;
+            Diseases.cancer++;
+            break;
+          case 42:
+            Diseases.lungDisease++;
+            break;
+          case 43:
+            Diseases.lungDisease++;
+            break;
+          case 44:
+            Diseases.lungDisease++;
+            break;
+        }
       }
+    } else {
+      showDialog(
+        context: context,
+        builder: (ctx) => AlertDialog(
+          backgroundColor: context.scaffoldBackGroundColor(),
+          actionsPadding: EdgeInsets.zero,
+          shape: RoundedRectangleBorder(
+              side: BorderSide(width: 5,color: context.scaffoldBackGroundColor()), borderRadius: CustomDecorations.borderRadiusGeometry),
+          actions: [
+            Button(
+              text: 'Okay',
+              color: context.accentColor(),
+              textColor: context.primaryColor(),
+              action: () => Navigator.of(ctx).pop(),
+              isBottomRadius: true,
+              noMargin: 0,
+            ),
+          ],
+          title: CustomText(
+            text: 'Warning',
+            fontSize: 24,
+            fontWeight: FontWeight.w700,
+            textColor: context.accentColor(),
+            textAlign: TextAlign.center,
+          ),
+          content: CustomText(
+            text: 'You have to select at least seven sypmhtoms',
+            fontSize: 14,
+            textColor: context.primaryTextColor(),
+            fontWeight: FontWeight.w600,
+          ),
+        ),
+      );
     }
     debugPrint('lung: ${Diseases.lungDisease}');
     debugPrint('hyper: ${Diseases.hypertension}');

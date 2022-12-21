@@ -12,14 +12,14 @@ class Third extends StatelessWidget {
   Widget build(BuildContext context) {
     return WrapContainer(
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Lottie.asset(
             Assets.animationsThird,
           ),
           CustomText(
-            text: 'buraya uygulamanın işyelişi ile ilgili bir metin gelecek',
+            text: 'In line with all the answers received from you, we will make the necessary calculations and direct you to the polyclinics with the most accurate result.',
             fontSize: 20,
             fontWeight: FontWeight.w400,
             textColor: context.primaryTextColor(),

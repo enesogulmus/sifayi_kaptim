@@ -186,7 +186,7 @@ class _QuestionsState extends State<Questions> {
             Button(
               color: CustomColors.accentColor,
               textColor: CustomColors.primaryColor,
-              text: 'Neyim Var',
+              text: 'I have',
               hasBorder: false,
               action: () {
                 calculationOfGeneralPosibility();
@@ -408,7 +408,8 @@ class _QuestionsState extends State<Questions> {
           backgroundColor: context.scaffoldBackGroundColor(),
           actionsPadding: EdgeInsets.zero,
           shape: RoundedRectangleBorder(
-              side: BorderSide(width: 5,color: context.scaffoldBackGroundColor()), borderRadius: CustomDecorations.borderRadiusGeometry),
+              side: BorderSide(width: 5, color: context.scaffoldBackGroundColor()),
+              borderRadius: CustomDecorations.borderRadiusGeometry),
           actions: [
             Button(
               text: 'Okay',

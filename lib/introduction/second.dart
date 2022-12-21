@@ -19,7 +19,7 @@ class Second extends StatelessWidget {
             Assets.animationsSecond,
           ),
           CustomText(
-            text: 'buraya uygulamanın işyelişi ile ilgili bir metin gelecek',
+            text: 'Please read and answer the questions carefully so that we can give you an accurate estimated diagnosis.',
             fontSize: 20,
             fontWeight: FontWeight.w400,
             textColor: context.primaryTextColor(),

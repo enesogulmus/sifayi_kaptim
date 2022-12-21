@@ -201,7 +201,7 @@ class _PersonalInformationState extends State<PersonalInformation> {
                     Button(
                       color: CustomColors.accentColor,
                       textColor: CustomColors.primaryColor,
-                      text: 'Neyim Var',
+                      text: 'I confirm',
                       hasBorder: false,
                       action: () {
                         pushGeneralSympthoms();

@@ -64,7 +64,7 @@ class _IntroState extends State<Intro> {
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 Button(
-                  text: 'Anladım',
+                  text: 'Ok, I understand',
                   color: context.accentColor(),
                   textColor: context.primaryColor(),
                   action: () {

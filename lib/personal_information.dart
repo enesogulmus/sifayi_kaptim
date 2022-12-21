@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:sifayi_kaptim/components/bottom_sheet.dart';
 import 'package:sifayi_kaptim/components/create_route.dart';
 import 'package:sifayi_kaptim/components/custom_button.dart';
+import 'package:sifayi_kaptim/components/custom_text.dart';
 import 'package:sifayi_kaptim/components/input_decoration.dart';
 import 'package:sifayi_kaptim/components/keyboard_focus.dart';
 import 'package:sifayi_kaptim/components/text_field.dart';
@@ -64,14 +65,22 @@ class _PersonalInformationState extends State<PersonalInformation> {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Container(
-                margin: const EdgeInsets.symmetric(
-                  vertical: 60,
+                margin: const EdgeInsets.only(top: 60,
                 ),
                 child: Image.asset(
                   Assets.svgLogo,
                   height: 78,
                 ),
               ),
+              const SizedBox(height: 10,),
+              CustomText(
+                text: 'Şifayı Kaptım',
+                fontSize: 28,
+                textAlign: TextAlign.center,
+                fontWeight: FontWeight.w500,
+                textColor: context.accentColor(),
+              ),
+              const SizedBox(height: 60,),
               Form(
                 key: _formKey,
                 child: Column(

@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:sifayi_kaptim/components/create_route.dart';
 import 'package:sifayi_kaptim/components/custom_button.dart';
 import 'package:sifayi_kaptim/components/custom_text.dart';
 import 'package:sifayi_kaptim/components/wrap_container.dart';
 import 'package:sifayi_kaptim/generated/assets.dart';
 import 'package:sifayi_kaptim/helper/constants.dart';
 import 'package:sifayi_kaptim/helper/extensions.dart';
+
+import 'special_questions.dart';
 
 class LabeledCheckbox extends StatelessWidget {
   const LabeledCheckbox({
@@ -143,11 +146,11 @@ class _QuestionsState extends State<Questions> {
           children: [
             Container(
               margin: const EdgeInsets.symmetric(
-                vertical: 60,
+                vertical: 40,
               ),
               child: Image.asset(
                 Assets.svgLogo,
-                height: 78,
+                height: 96,
               ),
             ),
             Container(
@@ -199,7 +202,7 @@ class _QuestionsState extends State<Questions> {
   }
 
   void calculationOfGeneralPosibility() {
-    if (selectedIndexes.length >= 7) {
+    if (selectedIndexes.length >= 9) {
       for (var element in selectedIndexes) {
         switch (element) {
           case 0:
@@ -401,6 +404,11 @@ class _QuestionsState extends State<Questions> {
             break;
         }
       }
+      Navigator.of(context).push(
+        createRoute(
+          routePage: const SpecialQuestions(),
+        ),
+      );
     } else {
       showDialog(
         context: context,
@@ -428,7 +436,7 @@ class _QuestionsState extends State<Questions> {
             textAlign: TextAlign.center,
           ),
           content: CustomText(
-            text: 'You have to select at least seven sypmhtoms',
+            text: 'You have to select at least nine sypmhtoms',
             fontSize: 14,
             textColor: context.primaryTextColor(),
             fontWeight: FontWeight.w600,

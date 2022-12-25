@@ -20,6 +20,16 @@ class Diseases {
   static const double ulcerTotal = 13;
   static const double heartDiseaseTotal = 27;
   static const double lungDiseaseTotal = 16;
+  static int diabetesQuestions=0;
+  static int hypertensionQuestions=0;
+  static int cancerQuestions=0;
+  static int cholesterolQuestions=0;
+  static int calcificationQuestions=0;
+  static int herniatedDiscQuestions=0;
+  static int ulcerQuestions=0;
+  static int heartDiseaseQuestions=0;
+  static int lungDiseaseQuestions=0;
+  static bool calculationOfGeneralPosibility=true;
 }
 
 class CustomDecorations {

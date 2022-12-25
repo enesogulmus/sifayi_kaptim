@@ -37,6 +37,7 @@ dependencies:
   flutter_svg: ^1.1.6
   lottie: ^1.4.3
   hive_flutter: ^1.1.0
+  restart_app: ^1.1.1+1
 
 dev_dependencies:
   flutter_test:
